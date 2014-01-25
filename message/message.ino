@@ -5,9 +5,17 @@
 
 #include "font5x7.h"
 
-#define DELAY 1000
+#define DELAY 800
 
-char message[] = "This is not a message.";
+char message[] = "Et voyageant ainsi qu'on fait en reve, elle arrive au milieu d'une peuplade de negres. \
+Et la, suivant la coutume qui s'attache aux fils de roi, l'enfant royal est nourri par la mere et par la nourrice. \
+Mais à la nourricee on ne laisse qu'un sein. L'autre est sectionne et la poitrine est plate comme celle d'un homme \
+(sauf le nœud de la cicatrice). La voyageuse, voyant cela, s'etonne. Alors le vice-roi : \
+\"Vous avez bien remarque comme tout le monde, n'est-ce pas, que quand l'enfant tette, l'autre mamelle, \
+il la touche constamment et la caresse. C'est ainsi que ça va le mieux. \
+\"Or la nourrice nous en coupons une pour que l'enfant apprenne plus vite a parler. En effet, ce sein absent l'intrigue tellement \
+qu'il n'a de cesse qu'il n'ait pu composer un mot et interroger la-dessus son entourage. \
+\"Et le premier mot qui vient, c'est toujours : abricot. \"";
 
 byte col = 0;
 byte leds[8][8];
