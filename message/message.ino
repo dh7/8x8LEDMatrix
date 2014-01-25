@@ -1,21 +1,13 @@
 /*
  * Show messages on an 8x8 led matrix,
  * scrolling from right to left.
- *
- * Uses FrequencyTimer2 library to
- * constantly run an interrupt routine
- * at a specified frequency. This
- * refreshes the display without the
- * main loop having to do anything.
- *
  */
 
-#include <FrequencyTimer2.h>
 #include "font5x7.h"
 
-#define DELAY 80
+#define DELAY 1000
 
-char message[] = "My Sex is on fire!!!";
+char message[] = "This is not a message.";
 
 byte col = 0;
 byte leds[8][8];
@@ -48,14 +40,14 @@ void setup() {
   }
 
   clearLeds();
-
+/*
   // Turn off toggling of pin 11
   FrequencyTimer2::disable();
   // Set refresh rate (interrupt timeout period)
   FrequencyTimer2::setPeriod(2000);
   // Set interrupt routine to be called
   FrequencyTimer2::setOnOverflow(display);
-
+*/
 }
 
 void scrollMsg( char *msg ) {
@@ -73,6 +65,8 @@ void scrollMsg( char *msg ) {
 
 void loop() {
   scrollMsg( message );
+  //char L = 'L';
+  //setChar(L);
 }
 
 void clearLeds() {
@@ -107,7 +101,8 @@ void slideChar(char ch, int del) {
       leds[j][7] = (bt & 0x01);
       bt = bt >> 1;
     }
-    delay(del);
+    //delay(del);
+    for (int d=0;d<del;d++) display();
   }
 
   for (int i = 0; i < 7; i++) {
@@ -119,7 +114,8 @@ void slideChar(char ch, int del) {
   for (int j = 0; j < 8; j++) {
     leds[j][7] = 0;
   }
-  delay(del);
+  //delay(del);
+  for (int d=0;d<del;d++) display();
 }
 
 
