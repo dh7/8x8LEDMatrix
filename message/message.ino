@@ -5,15 +5,15 @@
 
 #include "font5x7.h"
 
-#define DELAY 800
+#define DELAY 900
 
 char message[] = "Et voyageant ainsi qu'on fait en reve, elle arrive au milieu d'une peuplade de negres. \
 Et la, suivant la coutume qui s'attache aux fils de roi, l'enfant royal est nourri par la mere et par la nourrice. \
-Mais à la nourricee on ne laisse qu'un sein. L'autre est sectionne et la poitrine est plate comme celle d'un homme \
-(sauf le nœud de la cicatrice). La voyageuse, voyant cela, s'etonne. Alors le vice-roi : \
+Mais a la nourrice on ne laisse qu'un sein. L'autre est sectionne et la poitrine est plate comme celle d'un homme \
+(sauf le noeud de la cicatrice). La voyageuse, voyant cela, s'etonne. Alors le vice-roi : \
 \"Vous avez bien remarque comme tout le monde, n'est-ce pas, que quand l'enfant tette, l'autre mamelle, \
 il la touche constamment et la caresse. C'est ainsi que ça va le mieux. \
-\"Or la nourrice nous en coupons une pour que l'enfant apprenne plus vite a parler. En effet, ce sein absent l'intrigue tellement \
+\"Or a la nourrice nous en coupons une pour que l'enfant apprenne plus vite a parler. En effet, ce sein absent l'intrigue tellement \
 qu'il n'a de cesse qu'il n'ait pu composer un mot et interroger la-dessus son entourage. \
 \"Et le premier mot qui vient, c'est toujours : abricot. \"";
 
@@ -129,6 +129,12 @@ void slideChar(char ch, int del) {
 
 // Interrupt routine
 void display() {
+  //if (random(1000)>998) {
+  //  int x = random(8);
+  //  int y = random(8);
+  //  leds[x][y]=1;
+  //}
+  
   digitalWrite(cols[col], LOW);  // Turn whole previous column off
   col++;
   if (col == 8) {
@@ -136,7 +142,7 @@ void display() {
   }
   for (int row = 0; row < 8; row++) {
     //    if (leds[col][7 - row] == 1) {
-    if (leds[col][ row] == 1) {
+    if (leds[row][7-col] == 1) {
       digitalWrite(rows[row], LOW);  // Turn on this led
     }
     else {
